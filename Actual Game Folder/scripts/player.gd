@@ -9,6 +9,8 @@ extends RigidBody2D
 
 # export these values to make it easier to adjust
 # we can tweek these until the game feels fun
+const SPARKS_SCENE = preload("res://Actual Game Folder/scenes/components/sparks.tscn")
+
 @export var starting_spin_velocity:float = 30
 @export var default_velocity: float = 20
 @export var spin_velocity_drop_on_collision: float = 1
@@ -52,6 +54,15 @@ func _physics_process(delta: float) -> void:
 
 # slightly lower spin velocity every time there is a collision with another rigid body
 # we can add ways to increase your spin later to give the player more control
-func _on_body_entered(body: Node) -> void:
+func _on_body_entered(_body: Node) -> void:
 	spin_velocity -= spin_velocity_drop_on_collision
 	pass
+
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	var contact_count = get_contact_count()
+	if contact_count > 0:
+		for i in range(contact_count):
+			var sparks = SPARKS_SCENE.instantiate()
+			sparks.global_position = state.get_contact_local_position(i)
+			get_parent().add_child(sparks)
+			get_tree().create_timer(0.1).timeout.connect(sparks.queue_free)
