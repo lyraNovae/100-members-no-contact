@@ -9,6 +9,7 @@ extends RigidBody2D
 
 @export var starting_spin_velocity:float = 30;
 
+@onready var spin_bar: ProgressBar = $CanvasLayer/SpinBar
 
 var default_velocity: float = 20;
 var spin_velocity: float = starting_spin_velocity
@@ -20,7 +21,9 @@ func _physics_process(delta: float) -> void:
 		spin_velocity -= delta
 	else:
 		player_died = true
-	
+
+	spin_bar.value = (spin_velocity / starting_spin_velocity) * 100.0
+
 	var current_velocity = Vector2(0, 0);
 
 	if Input.is_action_pressed("left"):
