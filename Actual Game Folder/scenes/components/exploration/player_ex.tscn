@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://b1227f3u8ele1"]
+[gd_scene load_steps=61 format=3 uid="uid://b1227f3u8ele1"]
 
 [ext_resource type="Script" path="res://Actual Game Folder/scripts/exploration/player_ex.gd" id="1_l66dl"]
 [ext_resource type="Texture2D" uid="uid://bssqvkylmoitv" path="res://Actual Game Folder/sprites/characters/Racoon_32x32.png" id="2_amyne"]
@@ -439,7 +439,7 @@ size = Vector2(16, 21)
 [sub_resource type="CircleShape2D" id="CircleShape2D_tnv23"]
 radius = 22.3557
 
-[node name="PlayerEx" type="Node2D" unique_id=300371094]
+[node name="PlayerEx" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 scale = Vector2(1.5, 1.5)
@@ -470,7 +470,7 @@ scale = Vector2(0.666667, 0.666667)
 [node name="DialogueBox" parent="CharacterBody2D/Camera2D/DialogueBox" index="2"]
 visible = true
 
-[node name="RollSound" type="AudioStreamPlayer2D" parent="CharacterBody2D" unique_id=1114729136]
+[node name="RollSound" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
 stream = ExtResource("5_6oa3t")
 
 [editable path="CharacterBody2D/Camera2D/DialogueBox"]
