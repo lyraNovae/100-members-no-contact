@@ -6,11 +6,13 @@ enum SceneKey {
 	MENU,
 	EXPLORATION,
 	GAMEPLAY,
+	GARAGE,
 }
 const _SCENES_MAP: Dictionary = {
 	SceneKey.MENU: "res://Actual Game Folder/scenes/menu.tscn",
 	SceneKey.EXPLORATION: "res://Actual Game Folder/scenes/levels/exploration/green_field.tscn",
 	SceneKey.GAMEPLAY: "res://Actual Game Folder/scenes/gameplay.tscn",
+	SceneKey.GARAGE: "res://Actual Game Folder/scenes/garage.tscn",
 }
 
 var current_scene
@@ -38,6 +40,7 @@ func enter_battle(context: Dictionary = {}) -> void:
 		_set_suspended(current_scene, true)
 		_suspended.push_back(current_scene)
 	current_scene = _mount(SceneKey.GAMEPLAY)
+	AudioManager.play_music_stream(preload("res://Miscellanious Assets Dump/Audio/music/beyblades-battle.mp3"))
 
 func end_battle() -> void:
 	if current_scene:
@@ -45,6 +48,7 @@ func end_battle() -> void:
 	current_scene = _suspended.pop_back() if not _suspended.is_empty() else null
 	if current_scene:
 		_set_suspended(current_scene, false)
+	AudioManager.stop_music()
 
 func _mount(scene_name: SceneKey) -> Node:
 	_WORLD_NODE = get_node_or_null("/root/World")

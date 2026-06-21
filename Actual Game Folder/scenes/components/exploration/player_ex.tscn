@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://b1227f3u8ele1"]
+[gd_scene load_steps=56 format=3 uid="uid://b1227f3u8ele1"]
 
-[ext_resource type="Script" uid="uid://3n8wbd5ksjsw" path="res://Actual Game Folder/scripts/exploration/player_ex.gd" id="1_l66dl"]
+[ext_resource type="Script" path="res://Actual Game Folder/scripts/exploration/player_ex.gd" id="1_l66dl"]
 [ext_resource type="Texture2D" uid="uid://bssqvkylmoitv" path="res://Actual Game Folder/sprites/characters/Racoon_32x32.png" id="2_amyne"]
 [ext_resource type="PackedScene" uid="uid://crxweoeu82b5b" path="res://Actual Game Folder/scenes/components/exploration/dialog_box.tscn" id="3_5cf5f"]
 
@@ -387,48 +387,48 @@ animations = [{
 size = Vector2(16, 21)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tnv23"]
-radius = 22.355711
+radius = 22.3557
 
 [sub_resource type="LabelSettings" id="LabelSettings_5cf5f"]
 font_size = 8
 
-[node name="PlayerEx" type="Node2D" unique_id=300371094]
+[node name="PlayerEx" type="Node2D"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1208135547]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_l66dl")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=1935904447]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 sprite_frames = SubResource("SpriteFrames_ro5rq")
 animation = &"walk_down"
-frame_progress = 0.97247094
+frame_progress = 0.972471
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=33557156]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_bir22")
 
-[node name="InteractionDetector" type="Area2D" parent="CharacterBody2D" unique_id=1448556074]
+[node name="InteractionDetector" type="Area2D" parent="CharacterBody2D"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/InteractionDetector" unique_id=478907520]
-position = Vector2(-0.33333397, 1.000001)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/InteractionDetector"]
+position = Vector2(-0.333334, 1)
 shape = SubResource("CircleShape2D_tnv23")
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=792334170]
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 zoom = Vector2(2.5, 2.5)
 
-[node name="DialogueBox" parent="CharacterBody2D/Camera2D" unique_id=941970375 instance=ExtResource("3_5cf5f")]
+[node name="DialogueBox" parent="CharacterBody2D/Camera2D" instance=ExtResource("3_5cf5f")]
 visible = false
 position = Vector2(0, 56.33)
-scale = Vector2(0.6666667, 0.6666667)
+scale = Vector2(0.666667, 0.666667)
 
-[node name="DialogueBox" parent="CharacterBody2D/Camera2D/DialogueBox" index="2" unique_id=1503575011]
+[node name="DialogueBox" parent="CharacterBody2D/Camera2D/DialogueBox" index="2"]
 visible = true
 
-[node name="Label" type="Label" parent="CharacterBody2D" unique_id=641539050]
-offset_left = -84.66667
-offset_top = 12.666667
-offset_right = 99.33333
-offset_bottom = 32.666668
+[node name="Label" type="Label" parent="CharacterBody2D"]
+offset_left = -84.6667
+offset_top = 12.6667
+offset_right = 99.3333
+offset_bottom = 32.6667
 text = "What if I could roll too?(suggestion from K)"
 label_settings = SubResource("LabelSettings_5cf5f")
 
